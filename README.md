@@ -28,3 +28,11 @@ node server.js
 * Google Maps API
 * Yelp API
 
+![Alt text](/images/solefood1.png?raw=true "Landing Page")
+
+![Alt text](/images/solefood2.png?raw=true "Log in and register with Facebook & Google Auth")
+
+![Alt text](/images/solefood3.png?raw=true "Socket.io Chat")
+
+![Alt text](/images/solefood4.png?raw=true "User's coming attend events")
+

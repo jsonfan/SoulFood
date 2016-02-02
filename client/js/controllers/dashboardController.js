@@ -133,6 +133,7 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
     $scope.newEvent.date = $scope.newEvent.date.toDateString()
     $scope.newEvent.time = $scope.newEvent.time.toLocaleTimeString();
  		$scope.newEvent.events = 0;
+    console.log($scope.newEvent, 'AAAAAAAAAAA')
  		eventFactory.addEvent($scope.newEvent, function(){
  			getEventListById(id);
  		});
