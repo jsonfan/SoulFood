@@ -113,27 +113,28 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
     profileFactory.getEventsById(id,function(data)
     {
        $scope.events = data;
+        console.log(data, 'DATA BACK FROM CURRENT USERS');
         console.log($scope.events);
       })
     }
 
-  function getEventListById(currentUserId)
-  {
-    console.log(currentUserId, 'current users id')
-    profileFactory.getEventsById(currentUserId,function(data)
-    {
-      $scope.events = data;
-      // console.log($scope.events, 'event got back from');
-    })
-  }
+  // function getEventListById(currentUserId)
+  // {
+  //   console.log(currentUserId, 'current users id')
+  //   profileFactory.getEventsById(currentUserId,function(data)
+  //   {
+   
+  //     $scope.events = data;
+  //     // console.log($scope.events, 'event got back from');
+  //   })
+  // }
 
-  $scope.addEvent = function()
-	{
-    $scope.newEvent.user = $scope.userid;
+  $scope.addEvent = function(){
+    $scope.newEvent.user = $scope.user;
     $scope.newEvent.date = $scope.newEvent.date.toDateString()
     $scope.newEvent.time = $scope.newEvent.time.toLocaleTimeString();
- 		$scope.newEvent.events = 0;
-    console.log($scope.newEvent, 'AAAAAAAAAAA')
+ 		// $scope.newEvent.events = 0;
+    console.log($scope.newEvent, 'IN CONTROLLER')
  		eventFactory.addEvent($scope.newEvent, function(){
  			getEventListById(id);
  		});

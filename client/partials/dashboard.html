@@ -14,16 +14,7 @@
       </div>
     </div>
   </div>
-<div id = 'bodywrapper'>
-<div id = 'constraint'>
- <div id = 'friendbox'>
-  <h2>Available Friends</h2>
-  <table id = 'friendtable'>
-  <tr ng-repeat="person in persons">
-    <td ng-model="person">{{person.name}}</td> <td><button class='btn listbtn' ng-click="addFriend(person, user)"><i class="fa fa-user-plus"></i></button></td>
-  </tr>
-  </table>
-</div>
+
   <div id = 'eventsbox' class="Events">
     <label><input type="text" ng-model="filter_event" placeholder="search event..."></label>
     <h2>Upcoming Events</h2>
@@ -56,6 +47,19 @@
     </tbody>
   </table>
 </div>
+
+<div id = 'bodywrapper'>
+<div id = 'constraint'>
+ <div id = 'friendbox' class="col-md-6">
+  <h2>Available Friends</h2>
+  <table id = 'friendtable'>
+  <tr ng-repeat="person in persons">
+    <td ng-model="person">{{person.name}}</td> <td><button class='btn listbtn' ng-click="addFriend(person, user)"><i class="fa fa-user-plus"></i></button></td>
+  </tr>
+  </table>
+</div>
+</div>
+
 <div id = 'friendlist' class = 'col-md-6'>
   <h2>Friends List</h2>
   <div>
@@ -96,7 +100,7 @@
           <option value="Weho">Weho</option>
           <option value="MISC">MISC</option>
         </select>
-<!--       <label>Event Description:</label> <textarea ng-model="newEvent.description" required></textarea> -->
+      <label>Event Description:</label> <textarea ng-model="newEvent.description" required></textarea>
       <label>Type of food:</label>
         <select class = 'browser-default' ng-model="newEvent.type_of_food" name="type_of_food" required>
           <option value="Select">SELECT...</option>
@@ -119,5 +123,7 @@
       <input type="submit" value="Submit" class="btn">
   </form>
 </div>
+</div>
+
 </div>
 </div>
