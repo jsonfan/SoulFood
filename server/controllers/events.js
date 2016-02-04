@@ -5,7 +5,6 @@ var Restaurant = mongoose.model('Restaurant');
 module.exports = (function(){
 	return {
 		addEvent: function(req, res){
-			console.log('adding event', req.body);
 			var events = new Event(req.body);
   			events.save(function(err, record){
   				if(err){
@@ -37,7 +36,7 @@ module.exports = (function(){
 		},
 		getEventById: function(req, res)	{
       	Event.find({_id:req.params.id}).populate('comments').populate('comments.user').populate('user').populate('restaurant').exec(function(err, events){
-            console.log(events);
+            console.log(events, 'IS THIS FUNCTION RUNNING');
 				    res.json(events);
 
       	})

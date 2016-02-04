@@ -30,7 +30,16 @@ module.exports = (function(){
           } else {
             res.json(true);
           }
-        })
+        });
+        var restaurant = new Restaurant(newRestaurant);
+         restaurant.save(function(err){
+            if(err){
+              console.log('error trying to create!');
+              res.json({err: err});
+            } else {
+              res.json(true);
+              }
+          })
       })
     },
     // getAllRestaurants: function(req, res){
