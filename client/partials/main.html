@@ -1,23 +1,13 @@
-
-<div id = 'wrapper'>
-        <div id = 'slide1'>
-            <h1 id = 'soulfood'><span style='color:white'></span> <span style ='font-family:"Rock Salt"'>Soul Food</span></h1>
+<div ng-controller='mainController'>
+  <div>
+    <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+      <uib-slide ng-repeat="slide in slides" active="slide.active" index="slide.id">
+        <img ng-src="{{slide.image}}">
+        <div class="carousel-caption">
+          <h4>Slide Number {{slide.id}}</h4>
+          <p>Slide subtitle {{slide.text}}</p>
         </div>
-        <div class="container">
-          <div id = 'slide2'>
-              <!-- <div class="container"> -->
-                <h1>Social Dining Made Easy</h1>
-                 <div id = 'friends' class = 'three_boxes'>
-                   <h4>meet new friends</h4>
-                 </div>
-                 <div id = 'eating' class = 'three_boxes'>
-                   <h4>enjoy a meal together</h4>
-                 </div>
-                 <div id = 'networking' class = 'three_boxes'>
-                   <h4>build your network</h4>
-                 </div>
-              <!-- </div> -->
-
-          </div>
-        </div>
+      </uib-slide>
+    </uib-carousel>
+  </div>
 </div>
