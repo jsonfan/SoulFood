@@ -8,16 +8,16 @@ soulFood.controller('mainController', function($scope){
       id: 0
     },
     {
-      image: 'images/eventsbg.jpg',
+      image: 'images/parallax2.jpg',
       text: 'subtitle',
       id: 1
     },{
-      image: 'images/chatbg.jpg',
+      image: 'images/parallax4.jpg',
       text: 'subtitle',
       id: 2
     }
     ,{
-      image: 'images/newevent.jpg',
+      image: 'images/parallax1.jpg',
       text: 'subtitle',
       id: 3
     }

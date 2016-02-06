@@ -37,94 +37,74 @@
 	#nav li a.active { color: #fff; opacity:1; border-bottom: 2px solid #fff; }
 	#nav li a:hover { color: #fff; opacity:1;  }
 
-#slide1{
-	width: 100%;
-	background: url('/images/soul_foodbg.jpg') 50% 0 no-repeat fixed;
-	height: auto;
-	margin: 0;
-	padding: 200px 0 260px 0;
-	background-size: contain;
-	background-repeat: no-repeat;
+
+/*PARALLAX*/
+
+#intro { 
+    /*background: url('/images/soul_foodbg.jpg') 50% 0 fixed; */
+    height: auto;  
+    margin: 0 auto; 
+    width: 100%; 
+    position: relative; 
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    padding: 100px 0;
+    background-color: white;
 }
-	#slide1 h1{
-		text-align: center;
-		color: black;
-		background-color: rgba(192, 192, 192, .7);
-/*		border: 1px solid black;*/
-	}
-
-#slide2{
-	width: 100%;
-	height: 400px;
-	margin: 0 auto;
-	overflow: hidden;
-	padding: 30px 0;
-	text-align: center;
-	background-color: white;
-	color: black;
-	background-size: cover;
-	/*background: no-repeat fixed;*/
+#home { 
+    background: url('/images/parallax3.jpg') 50% 0 fixed; 
+    height: auto;  
+    margin: 0 auto; 
+    width: 100%; 
+    position: relative; 
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    padding: 200px 0;
 }
-	.three_boxes{
-		width: 300px;
-		height: 340px;
-		/*border: 1px solid black;*/
-		display: inline-block;
-		position: relative;
-	}
-	.three_boxes h4{
-		position: absolute;
-		bottom: 0;
-		margin-left: 70px;
-		margin-top: 5px;
-	}
-	#friends{
+#about { 
+    /*background: url('/images/newevent.jpg') 50% 0 fixed; */
+    height: auto;
+    margin: 0 auto; 
+    width: 100%; 
+    position: relative; 
+    box-shadow: 0 0 50px rgba(0,0,0,0.8);
+    padding: 60px 0;
+    color: #fff;
+    background-color: white;
+    color: black;
+    text-align: center;
+}
 
-		background: url('/images/addfriend.jpg') no-repeat;
-	}
-	#eating{
-		background: url('/images/eatingicon.jpeg') no-repeat;
-		margin-left: 15px;
-		margin-right: 25px;
-	}
-	#networking{
-		background: url('/images/networking.jpeg') no-repeat;
-	}
-
-#slide3{
-	width: 100%;
-	background: url('/images/main_texture.png') 50% 0 no-repeat fixed;
-	height: 600px;
-	margin: 0 auto;
-	padding: 200px 0 260px 0;
-	background-size: cover;
+#intro {
+	padding-top: 30px;
+	padding-bottom: 50px;
+	text-align: center
+}
+/*footer*/
+.row{
+	height: 120px;
+	margin-bottom: 0px;
+	background-color: #C62828;
+}
+* {
+    margin: 0;
+}
+html, body {
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -155px; /* the bottom margin is the negative value of the footer's height */
+}
+.footer, .push {
+    height: 155px; /* .push must be the same height as .footer */
+}
+#footer{
 	text-align: center;
 	color: white;
+	margin-top: 30px;
 }
-
-.services {
-	display: inline-block;
-	border: 1px solid black;
-	width: 200px;
-	height: 200px;
-	color: white;
+.row {
+	text-align: center;
+	height: 90px;
 }
-	#american {
-		background: url('/images/american.jpg') no-repeat;
-		background-size: 135%;
-	}
-	#chinese{
-		background: url('/images/orangechicken.jpg') no-repeat;
-	}
-	#med{
-		background: url('/images/greek-salad.jpg') no-repeat;
-	}
-	#mexican{
-		background: url('/images/mex1.jpg') no-repeat;
-	}
-	#italian{
-		background: url('/images/italian.jpg') no-repeat;
-	}
-	#indian{
-		background: url('/images/indian-food.jpg') no-repeat;
-	}
