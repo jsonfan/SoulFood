@@ -31,7 +31,7 @@
     <script src="/js/controllers/chatController.js"></script>
     <script type ="text/javascript" src="/socket.io/socket.io.js"></script>
     <script>
-    	var socket = io.connect('http://localhost:8000');
+    	var socket = io.connect();
     </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script type="text/javascript">
@@ -45,28 +45,12 @@
 	 					$("#chatbox").append("<p>" + data.history[i] + "</p>");
 	 				}
 	 			});
-
-     
-		   $window = $(window);
-		 
-		   $('section[data-type="background"]').each(function(){
-		     // declare the variable to affect the defined data-type
-		     var $scroll = $(this);
-		                     
-		      $(window).scroll(function() {                         
-		        var yPos = -($window.scrollTop() / $scroll.data('speed')); 
-		         
-		        // background position
-		        var coords = '50% '+ yPos + 'px';
-		        $scroll.css({ backgroundPosition: coords });    
-		      });
-		   });  
     	});
     </script>
 	</head>
 	<body class="">
 		<div ng-controller='appCtrl'>
-			<nav class="navbar navbar-default red darken-3" role="navigation" style="margin-bottom: 0px">
+			<nav class="navbar navbar-default red darken-3" role="navigation">
 			      <!-- Brand and toggle get grouped for better mobile display -->
 			      <div class="navbar-header red darken-3">
 			        <button type="button" class="navbar-toggle" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
