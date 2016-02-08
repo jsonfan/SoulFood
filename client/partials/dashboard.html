@@ -1,129 +1,122 @@
-<div class="container" ng-controller='dashboardController'>
+<div ng-controller='dashboardController'>
+  <!-- AVAILABLE FRIENDS -->
   <div class="row">
-    <div class="col s12 m7" >
-      <div class="card small">
-        <div class="card-image">
-          <img src='{{user.pictureURL}}'>
-          <span class="card-title" ng-bind='user.name'></span>
-        </div>
-        <div class="card-content col-md-6">
-        </div>
-        <div class="card-action">
-          <a href="#">{{user.email}}</a>
+    <div class="col s3">
+      <div class="card-image">
+        <img src='{{user.pictureURL}}'>
+        <span class="card-title" ng-bind='user.name'></span>
+      </div>
+     <!--  <div class="card-content col-md-6">
+      </div>
+      <div class="card-action">
+        <a href="#">{{user.email}}</a>
+      </div> -->
+      <!-- FRIEND LIST -->
+      <h5>Friends List</h5>
+      <div>
+        <table>
+        <tr ng-repeat="friend in user.friends">
+          <td ng-model="friend">{{friend.name}}</td> <td><button ng-click="removeFriend(friend, user)" class="btn red darken-4"><i class="fa fa-user-times"></i></button></a></td>
+        </tr>
+        </table>
+      </div>
+      <h5>Available Friends</h5>
+      <table id = 'friendtable'>
+        <tr ng-repeat="person in persons">
+            <td ng-model="person">{{person.name}}</td> <td><button class='btn listbtn blue lighten-1' ng-click="addFriend(person, user)"><i class="fa fa-user-plus"></i></button></td>
+        </tr>
+      </table>
+    </div>
+      <!-- END FRIENDLIST -->
+    <div class="col s9">
+      <!-- Teal page content  -->
+      <label><input type="text" ng-model="filter_event" placeholder="search event..."></label>
+      <h4>Upcoming Events</h4>
+      <table class="highlight centered bordered">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Title</th>
+            <th>Restaurant</th>
+            <th>Location</th>
+            <th>Description</th>
+            <th>Type of food</th>
+            <th>Created by</th>
+            <th>Remove Event</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="event in events | filter:filter_event | orderBy: 'created_at' : reverse" >
+            <td ng-bind="event.date"></td>
+            <td ng-bind="event.time"></td>
+            <td> <a href="#/event/{{event._id}}"><span ng-bind='event.title'></span></a> </td>
+            <td> <a href="#/restaurant/{{event.restaurant._id}}"><span ng-bind='event.restaurant.name'></span></a> </td>
+            <td ng-bind="event.location"></td>
+            <td ng-bind="event.description"></td>
+            <td ng-bind="event.type_of_food"></td>
+            <td> <a ng-href="#/user/{{event.user._id}}"><span ng-bind='event.user.name'> </td>
+            <td><button ng-show="event.user._id == user._id" ng-click="destroyEvent(event._id)" class="btn red darken-4"><i class="fa fa-trash"></i></button></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- ADD EVENT  -->
+      <div class="row" >
+        <form ng-submit="addEvent()" class="col s6 z-depth-3">
+         <h4>Add a new Event</h4>
+          <label>Event Title:</label> <input type= "text" name="title" value="title" ng-model="newEvent.title" required>
+          <label>Event Date:</label> <input  type="date" name="date" ng-model="newEvent.date" required>
+          <!-- <uib-datepicker></uib-datepicker> -->
+          <label>Event Time:</label> <input  type="time" name="time" ng-model="newEvent.time"  required>
+          <label>Restaurant:</label>
+          <select class = 'browser-default' ng-model="newEvent.restaurant" required>
+            <option ng-repeat="restaurant in user.favorite_restaurants" value="{{restaurant._id}}">{{restaurant.name}}</option>
+          </select>
+          <label>Event Location:</label>
+          <select class = 'browser-default' ng-model="newEvent.location" name="location" required>
+            <option value="Burbank">Burbank</option>
+            <option value="LA">LA</option>
+            <option value="Tustin">Tustin</option>
+            <option value="DTLA">DTLA</option>
+            <option value="Glendale">Glendale</option>
+            <option value="Irvine">Irvine</option>
+            <option value="Torrance">Torrance</option>
+            <option value="Pasadena">Pasadena</option>
+            <option value="Rosemead">Rosemead</option>
+            <option value="Hacienda">Hacienda</option>
+            <option value="Walnut">Walnut</option>
+            <option value="Cerritos">Cerritos</option>
+            <option value="Arcadia">Arcadia</option>
+            <option value="Weho">Weho</option>
+            <option value="MISC">MISC</option>
+          </select>
+          <label>Event Description:</label> <textarea ng-model="newEvent.description" required></textarea>
+          <label>Type of food:</label>
+          <select class = 'browser-default' ng-model="newEvent.type_of_food" name="type_of_food" required>
+            <option value="Select">SELECT...</option>
+            <option value="Korean">Korean</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Thai">Thai</option>
+            <option value="Taiwanese">Taiwanese</option>
+            <option value="American">American</option>
+            <option value="BBQ">BBQ</option>
+            <option value="Italian">Italian</option>
+            <option value="Fusion">Fusion</option>
+            <option value="Mexican">Mexican</option>
+            <option value="fastFood">Fast Food</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Sushi">Sushi</option>
+            <option value="Burgers">Burgers</option>
+            <option value="Indian">Indian</option>
+            <option value="MISC">MISC</option>
+          </select>
+          <input type="submit" value="Submit" class="btn blue lighten-1">
+        </form>
         </div>
       </div>
+      <!-- END SIDE PANEL -->
     </div>
   </div>
-
-  <div id = 'eventsbox' class="Events">
-    <label><input type="text" ng-model="filter_event" placeholder="search event..."></label>
-    <h2>Upcoming Events</h2>
-  <table class="highlight">
-    <thead>
-      <tr>
-        <th>Date</th>
-        <th>Time</th>
-        <th>Title</th>
-        <th>Restaurant</th>
-        <th>Location</th>
-        <th>Description</th>
-        <th>Type of food</th>
-        <th>Created by</th>
-        <th>Remove Event</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="event in events | filter:filter_event | orderBy: 'created_at' : reverse" >
-        <td ng-bind="event.date"></td>
-        <td ng-bind="event.time"></td>
-        <td> <a href="#/event/{{event._id}}"><span ng-bind='event.title'></span></a> </td>
-        <td> <a href="#/restaurant/{{event.restaurant._id}}"><span ng-bind='event.restaurant.name'></span></a> </td>
-        <td ng-bind="event.location"></td>
-        <td ng-bind="event.description"></td>
-        <td ng-bind="event.type_of_food"></td>
-        <td> <a ng-href="#/user/{{event.user._id}}"><span ng-bind='event.user.name'> </td>
-        <td><button ng-show="event.user._id == user._id" ng-click="destroyEvent(event._id)" class="btn"><i class="fa fa-trash"></i></button></td>
-      </tr>
-    </tbody>
-  </table>
 </div>
 
-<div id = 'bodywrapper'>
-<div id = 'constraint'>
- <div id = 'friendbox' class="col-md-6">
-  <h2>Available Friends</h2>
-  <table id = 'friendtable'>
-  <tr ng-repeat="person in persons">
-    <td ng-model="person">{{person.name}}</td> <td><button class='btn listbtn' ng-click="addFriend(person, user)"><i class="fa fa-user-plus"></i></button></td>
-  </tr>
-  </table>
-</div>
-</div>
-
-<div id = 'friendlist' class = 'col-md-6'>
-  <h2>Friends List</h2>
-  <div>
-    <table>
-    <tr ng-repeat="friend in user.friends">
-      <td ng-model="friend">{{friend.name}}</td> <td><button ng-click="removeFriend(friend, user)" class="btn"><i class="fa fa-user-times"></i></button></a></td>
-    </tr>
-    </table>
-  </div>
-</div>
-</div>
-<div id = 'neweventbox ' class = 'col-md-6'>
-  <h2>Add a new Event</h2>
-  <form ng-submit="addEvent()">
-      <label>Event Title:</label> <input type= "text" name="title" value="title" ng-model="newEvent.title" required>
-      <label>Event Date:</label> <input  type="date" name="date" ng-model="newEvent.date" required>
-      <!-- <uib-datepicker></uib-datepicker> -->
-      <label>Event Time:</label> <input  type="time" name="time" ng-model="newEvent.time"  required>
-      <label>Restaurant:</label>
-        <select class = 'browser-default' ng-model="newEvent.restaurant" required>
-          <option ng-repeat="restaurant in user.favorite_restaurants" value="{{restaurant._id}}">{{restaurant.name}}</option>
-        </select>
-      <label>Event Location:</label>
-        <select class = 'browser-default' ng-model="newEvent.location" name="location" required>
-          <option value="Burbank">Burbank</option>
-          <option value="LA">LA</option>
-          <option value="Tustin">Tustin</option>
-          <option value="DTLA">DTLA</option>
-          <option value="Glendale">Glendale</option>
-          <option value="Irvine">Irvine</option>
-          <option value="Torrance">Torrance</option>
-          <option value="Pasadena">Pasadena</option>
-          <option value="Rosemead">Rosemead</option>
-          <option value="Hacienda">Hacienda</option>
-          <option value="Walnut">Walnut</option>
-          <option value="Cerritos">Cerritos</option>
-          <option value="Arcadia">Arcadia</option>
-          <option value="Weho">Weho</option>
-          <option value="MISC">MISC</option>
-        </select>
-      <label>Event Description:</label> <textarea ng-model="newEvent.description" required></textarea>
-      <label>Type of food:</label>
-        <select class = 'browser-default' ng-model="newEvent.type_of_food" name="type_of_food" required>
-          <option value="Select">SELECT...</option>
-          <option value="Korean">Korean</option>
-          <option value="Chinese">Chinese</option>
-          <option value="Thai">Thai</option>
-          <option value="Taiwanese">Taiwanese</option>
-          <option value="American">American</option>
-          <option value="BBQ">BBQ</option>
-          <option value="Italian">Italian</option>
-          <option value="Fusion">Fusion</option>
-          <option value="Mexican">Mexican</option>
-          <option value="fastFood">Fast Food</option>
-          <option value="Japanese">Japanese</option>
-          <option value="Sushi">Sushi</option>
-          <option value="Burgers">Burgers</option>
-          <option value="Indian">Indian</option>
-          <option value="MISC">MISC</option>
-        </select>
-      <input type="submit" value="Submit" class="btn">
-  </form>
-</div>
-</div>
-
-</div>
-</div>

@@ -6,6 +6,7 @@ module.exports = (function(){
 	return {
 		addEvent: function(req, res){
 			var events = new Event(req.body);
+			console.log(req.body, "IN ADD EVENT SERVER!!!!!!!!!!!!!!!!!")
   			events.save(function(err, record){
   				if(err){
   					res.json({status:'failed', err:err})

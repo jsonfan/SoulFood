@@ -65,8 +65,6 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
   }
 
   $scope.addFriend = function(friend, user){
-    // console.log(friend, 'in friend trying to add');
-    // console.log(user, 'current user');
     console.log('HEY IM TRYING TO ADD A FRIEND!!!!');
     for(var i = 0; i<user.friends.length; i++){
         if(user.friends[i]._id === friend._id){
@@ -118,16 +116,16 @@ soulFood.controller('dashboardController', function($scope, $routeParams, $locat
       })
     }
 
-  // function getEventListById(currentUserId)
-  // {
-  //   console.log(currentUserId, 'current users id')
-  //   profileFactory.getEventsById(currentUserId,function(data)
-  //   {
+  function getEventListById(currentUserId)
+  {
+    console.log(currentUserId, 'current users id')
+    profileFactory.getEventsById(currentUserId,function(data)
+    {
    
-  //     $scope.events = data;
-  //     // console.log($scope.events, 'event got back from');
-  //   })
-  // }
+      $scope.events = data;
+      // console.log($scope.events, 'event got back from');
+    })
+  }
 
   $scope.addEvent = function(){
     $scope.newEvent.user = $scope.user;
